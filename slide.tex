@@ -1,14 +1,16 @@
 \documentclass{beamer}        
 
+\usepackage{ctex}
 \usepackage{graphicx}
 \usepackage{mathtools}
+\usepackage{listings}
 \usepackage{amsmath,bm,amsfonts,amssymb,enumerate,epsfig,bbm,calc,color,ifthen,capt-of,multimedia,hyperref}
-\usepackage{xeCJK} 
+\usepackage{xeCJK}
 \setCJKmainfont{WenQuanYi Micro Hei Mono}
 
 \usetheme{Frankfurt}
 \usecolortheme{orchid}
-
+\graphicspath{{image/}}
 
 \begin{document}
 
@@ -18,50 +20,130 @@
 \date{04-07-2022}
 \frame{\titlepage}
 
-%% --> 目录结构
-%
+
 \begin{frame}{目录}
-  \tableofcontents[hideallsubsections]
+  \tableofcontents
 \end{frame}
 
-%% --> 正式内容开始
-%
-\section{文学}    % 第 1 节
-
-%% 每一节开头显示目录，并高亮当前节的主题
-\AtBeginSection[]{\frame{\tableofcontents[currentsection,hideallsubsections]}}
-
-%% --> 第 1 帧
-\begin{frame}{文学}{论语}
-
-\onslide<1->{子在川上曰：逝者如斯夫，不舍昼夜！}
-
-\onslide<2->{子曰：巧言令色，鲜矣仁！}
+\section{前言}
+\begin{frame}{前言}
+  Julia集合是一个在复平面上形成分形的点的集合。以法国数学家加斯顿·朱利亚的名字命名。Julia集合通过普普通通的函数生成各种美丽而繁复的图形，往往让人惊叹不已。Julia集合和Mandelbrot集合生成的分形图形各具特点且美轮美奂，十分吸引人。Julia集合是由迭代产生，而迭代是不断重复的过程。在数学上，该过程往往是指计算某个数学函数。Julia集合与Mandelbrot集合一样，被迭代的都是二次多项式$f(x)=x^2+c$。通过迭代该函数而产生的轨迹，具有极大的研究意义，对迭代理论的研究影响深远。 
 
 \end{frame}
 
-%% --> 第 2 帧
-\begin{frame}{中外文学}{Shakespere}
+\section{数学理论}
+\begin{frame}{数学理论}
+  \begin{itemize}
+  \item Julia集合与Mandelbrot集合都能由$f(x)=x^2+c$反复迭代得到。
+  \item Julia集合：固定$c$的值，取$z=z_0$，从而迭代序列为$(0,f_c(0),f_c(f_c(0),f_c(f_c(f_c(0)),\cdots)$。
+  \item Mandelbrot集合：$z=0$，$c$为复数参数，从而迭代序列为$(0,f_c(0),f_c(f_c(0),f_c(f_c(f_c(0)),\cdots)$。
+  \end{itemize}
+\end{frame}  
 
-To be, or not to be, that is the question.
-
+\section{算法}
+\subsection{Julia集合的算法}
+\begin{frame}[fragile]{Julia集合的算法}
+  \begin{block}{Julia集}
+\begin{verbatim}
+  for each z in complex ,|c|<2,count=0
+  do z=z^2+c,count+=1
+  loop until abs(z)>2 || count>maxcount
+  if count>maxcount ,draw c,black
+  else draw c,white
+\end{verbatim}
+  \end{block}
 \end{frame}
 
+\subsection{Mandelbrot集合的算法}
+\begin{frame}[fragile]{Mandelbrot集合的算法}
+  \begin{block}{Mandelbrot集}
+\begin{verbatim}
+  for each c in complex ,z=0,count=0
+  do z=z^2+c,count+=1
+  loop until abs(z)>2 || count>maxcount
+  if count>maxcount ,draw c,black
+  else draw c,white
+\end{verbatim}
+  \end{block}
+\end{frame}
 
-\section{数学}    % 第 2 节
+\section{数值算例}
+\subsection{Julia集合例子}
+\begin{frame}{Julia集合例子}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{a}
+    \caption{Julia 1}
+  \end{minipage}
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{b}
+    \caption{Julia 2}
+  \end{minipage}
+\end{figure}
 
-%% --> 第 3 帧
-\begin{frame}[t]{数学}{欧拉公式}  % 取消垂直居中
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{c}
+    \caption{Julia 3}
+  \end{minipage}
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{d}
+    \caption{Julia 4}
+  \end{minipage}
+\end{figure}  
+\end{frame}
 
-欧拉发现了下面的公式
-$$
-e^{ix} = \cos x + i \sin x
-$$
-当$x = \pi$时，得
-$$
-e^{\pi i} + 1 = 0
-$$
+\subsection{Mandelbrot集合例子}
+\begin{frame}{Mandelbrot集合例子}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{z}
+    \caption{Mandelbrot 1}
+  \end{minipage}
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{y}
+    \caption{Mandelbrot 2}
+  \end{minipage}
+\end{figure}
 
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{x}
+    \caption{Mandelbrot 3}
+  \end{minipage}
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=4cm]{w}
+    \caption{Mandelbrot 4}
+  \end{minipage}
+\end{figure}
+\end{frame}
+
+\section{结语}
+\begin{frame}{结语}
+  不同的参数$c$可能使序列的绝对值逐渐发散到无限大，也可能收敛在有限的区域内。Mandelbrot集合是使序列不延伸至无限大的所有复数$c$的集合，而将使其不扩散的$z$值的集合称为Julia集合。Mandelbrot集的神奇之处就在于，我们可以对这个分形图形不断放大，不同的尺度下所看到的景象可能完全不同。放大到一定时候，我们甚至可以看到更小规模的Mandelbrot集，这证明Mandelbrot集是自相似的。而不同的复数$c$对应着不同的Julia集，也就是说每取一个不同的$c$我们都能得到一个不同的Julia集分形图形，并且令人吃惊的是每一个分形图形都是那么美丽。
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\begin{minipage}{1\textwidth}
+\setbeamercolor{mybox}{fg=white, bg=black!50!blue}
+\begin{beamercolorbox}[wd=0.70\textwidth, rounded=true, shadow=true]{mybox}
+  \LARGE \centering 谢谢观看! 
+\end{beamercolorbox}
+\end{minipage}
+\end{center}
 \end{frame}
 
 \end{document}

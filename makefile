@@ -11,11 +11,13 @@ report: last.tex han.bib
 
 slide: slide.tex
 	xelatex slide
+	xelatex slide
 	rm slide.log
 	rm slide.nav
 	rm slide.out
 	rm slide.aux
 	rm slide.snm
 	rm slide.toc
+	rm slide.vrb
 
 
