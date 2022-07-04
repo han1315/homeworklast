@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{float}
+\usepackage[colorlinks,linkcolor=red]{hyperref}
 
 \title{项目作业 ：Julia集的分析和探索}
 
@@ -17,13 +18,13 @@
 
 
 \section{摘要}
-\verb|Julia|集合是一种在复平面上形成分形的点的集合，Julia集是由$f_c(z)=z^2+c$反复迭代得到，不同的复数$c$生成的Julia集皆不同，这些Julia集形状各异，百花齐放。另一方面，同样是由$f_c(z)=z^2+c$反复迭代得到的\verb|Mandelbrot|集合,其特点则是将其图像不停放大就能得到格式各样造型迥异的分形图案。本文将讨论\verb|Julia|集并合并分析其余\verb|Mandelbrot|集的关系。\cite{shishikura1998hausdorff}
+\verb|Julia|集合是一种在复平面上形成分形的点的集合，Julia集是由$f_c(z)=z^2+c$反复迭代得到，不同的复数$c$生成的Julia集皆不同，这些Julia集形状各异，百花齐放。另一方面，同样是由$f_c(z)=z^2+c$反复迭代得到的\verb|Mandelbrot|集合,其特点则是将其图像不停放大就能得到格式各样造型迥异的分形图案。本文将讨论\verb|Julia|集并合并分析其余\verb|Mandelbrot|集的关系。 \href{https://complex-analysis.com/content/julia_set.html}{The Julia Set}
 
 \section{引言}
-\verb|Julia|集合是一个在复平面上形成分形的点的集合。以法国数学家加斯顿·朱利亚的名字命名。\verb|Julia|集合通过普普通通的函数生成各种美丽而繁复的图形，往往让人惊叹不已。\verb|Julia|集合和\verb|Mandelbrot|集合生成的分形图形各具特点且美轮美奂，十分吸引人。
+\verb|Julia|集合是一个在复平面上形成分形的点的集合。以法国数学家加斯顿·朱利亚的名字命名。\verb|Julia|集合通过普普通通的函数生成各种美丽而繁复的图形，往往让人惊叹不已。\verb|Julia|集合和\verb|Mandelbrot|集合生成的分形图形各具特点且美轮美奂，十分吸引人。\cite{douady1986julia}
 
 \section{问题背景}
-\verb|Julia|集合是由迭代产生，而迭代是不断重复的过程。在数学上，该过程往往是指计算某个数学函数。\verb|Julia|集合与\verb|Mandelbrot|集合一样，被迭代的都是二次多项式$f(x)=x^2+c$。通过迭代该函数而产生的轨迹，具有极大的研究意义，对迭代理论的研究影响深远。
+\verb|Julia|集合是由迭代产生，而迭代是不断重复的过程。在数学上，该过程往往是指计算某个数学函数。\verb|Julia|集合与\verb|Mandelbrot|集合一样，被迭代的都是二次多项式$f(x)=x^2+c$。通过迭代该函数而产生的轨迹，具有极大的研究意义，对迭代理论的研究影响深远。 
 
 \section{数学理论}
 \begin{flushleft}
@@ -109,7 +110,7 @@
 \end{figure}
 
 \section{结语}
-
+不同的参数$c$可能使序列的绝对值逐渐发散到无限大，也可能收敛在有限的区域内。\verb|Mandelbrot|集合是使序列不延伸至无限大的所有复数$c$的集合，而将使其不扩散的$z$值的集合称为\verb|Julia|集合。\verb|Mandelbrot|集的神奇之处就在于，我们可以对这个分形图形不断放大，不同的尺度下所看到的景象可能完全不同。放大到一定时候，我们甚至可以看到更小规模的\verb|Mandelbrot|集，这证明\verb|Mandelbrot|集是自相似的。而不同的复数$c$对应着不同的\verb|Julia|集，也就是说每取一个不同的$c$我们都能得到一个不同的\verb|Julia|集分形图形，并且令人吃惊的是每一个分形图形都是那么美丽。这些结论我们都能从上图中看出，其中前四张为不断放大的\verb|Mandelbrot|图形，后四张为不同$c$下的\verb|Julia|图形。\cite{lei1990similarity}
 
 \bibliography{han}
 \end{document}

@@ -7,8 +7,6 @@ report: last.tex han.bib
 	rm last.bbl
 	rm last.blg
 	rm last.log
-
-open:
-	okular last.pdf
+	rm last.out
 
 
