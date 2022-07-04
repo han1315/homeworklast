@@ -39,13 +39,13 @@ int main(int argc, char *argv[])
 				if (man.is_disconvergence())
 					break;
 			}
-			if (man.stop_criterion()) //当函数达到最大值或最大迭代次数时后，将点列染成白色
+			if (man.stop_criterion()) //当函数值超过最大值后，将点列染成白色
 			{
 				cache[pos * 3] = 255;
 				cache[pos * 3 + 1] = 255;
 				cache[pos * 3 + 2] = 255;
 			}
-			else //当函数未达最大值或最大迭代次数时，将点列染成黑色
+			else //当函数达到最大迭代次数时，将点列染成黑色
 			{
 				cache[pos * 3] = 0;
 				cache[pos * 3 + 1] = 0;

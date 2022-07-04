@@ -9,18 +9,18 @@ int main(int argc, char *argv[])
     if (argc < 5) //当输入参数不足时，发出提醒
 	{
 		std::cerr << "Usage: " << argv[0]
-				  << " filename ox oy dimension" << std::endl;
+				  << " filename complex_real complex_imaginay max_iteration_time" << std::endl;
 		exit(-1);
 	}
 	
-	Window win(std::atof(argv[2]), std::atof(argv[3]), std::atof(argv[4]));
+    Window win(0.0, 0.0, 3.0);
 	double lpp = win.get_lpp();
 	double dim = win.get_dimension();
 	int width = win.get_width();
 	int height = win.get_height();
 	double ox = win.get_ox() - dim;
 	double oy = win.get_oy() - dim / width * height;
-	int N = 20;
+	int N = std::atof(argv[4]);
 
 	char *cache = new char[width * height * 3]; //画图
 
@@ -32,20 +32,20 @@ int main(int argc, char *argv[])
 			int pos = width * j + i; 
 		        Julia man(std::complex<double>{x,y},
 						   N,
-				  std::complex<double>{-0.835,-0.2321});
+				  std::complex<double>{std::atof(argv[2]),std::atof(argv[3])});
 			while (!man.stop_criterion()) //但未达到最大值时且未达到最大迭代次数时，执行循环，当达到最大迭代次数或最大值时，循环结束
 			{
 				man.forward_step();
 				if (man.is_disconvergence())
 					break;
 			}
-			if (man.stop_criterion()) //当函数达到最大值或最大迭代次数时后，将点列染成白色
+			if (man.stop_criterion()) //当函数值超过最大值后，将点列染成白色
 			{
 				cache[pos * 3] = 255;
 				cache[pos * 3 + 1] = 255;
 				cache[pos * 3 + 2] = 255;
 			}
-			else //当函数未达最大值或最大迭代次数时，将点列染成黑色
+			else //当函数达到最大迭代次数时，将点列染成黑色
 			{
 				cache[pos * 3] = 0;
 				cache[pos * 3 + 1] = 0;

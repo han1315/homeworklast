@@ -69,7 +69,7 @@ void Julia::forward_step() //迭代函数
 	iteration_times++; //计算迭代次数
 	if (iteration_times == max_iteration) //当迭代次数达到最大值时，迭代终止
 	        flag_disconvergence = true; 
-	if (std::abs(iteration_point) > 2.0) //当函数值达最大值时，迭代停止,abs是绝对值函数
+	if (std::abs(iteration_point) > 2.0) //当函数值超过最大值时，迭代停止,abs是绝对值函数
 	        flag_stop = true; //
 };
 
